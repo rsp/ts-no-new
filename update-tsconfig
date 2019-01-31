@@ -1,0 +1,2 @@
+#!/bin/sh
+for i in rsp-*; do cp -v tsconfig.json $i; done
