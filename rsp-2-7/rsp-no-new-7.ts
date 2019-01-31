@@ -15,8 +15,12 @@ class $A {
   static $c = A;
   x: number;
   constructor() {
-    this.x = 0;
-    Object.defineProperty(this, 'constructor', { value: (this.constructor as any as $c).$c || this.constructor });
+    this.x = 10;
+    // console.log('XXX', (this.constructor as any as $c).$c == $A.$c)
+    // console.log('YYY', this.constructor == $A);
+    // this.constructor = (this.constructor as any as $c).$c || this.constructor;
+    // Object.defineProperty(this, 'constructor', { value: (this.constructor as any as $c).$c || this.constructor });
+    Object.defineProperty(this, 'constructor', { value: (this.constructor as any as $c).$c });
   }
   a() {
     return this.x += 1;
@@ -64,6 +68,8 @@ for (let k in o) {
   console.log('x.constructor == $A: ', x.constructor == $A);
   console.log('x.constructor == B:  ', x.constructor == B);
   console.log('x.constructor == $B: ', x.constructor == $B);
+  console.log('x.hasOwnProperty(\'constructor\'): ', x.hasOwnProperty('constructor'));
+  console.log('x.propertyIsEnumerable(\'constructor\'): ', x.propertyIsEnumerable('constructor'));
   console.log('x.a():', x.a());
   console.log('x.a():', x.a());
   console.log('x.a():', x.a());

@@ -62,6 +62,8 @@ for (let k in o) {
   console.log('x.constructor.name: ', x.constructor.name);
   // console.log('x.constructor == A:', x.constructor == A); // always false
   // console.log('x.constructor == B:', x.constructor == B); // always false
+  console.log('x.hasOwnProperty(\'constructor\'): ', x.hasOwnProperty('constructor'));
+  console.log('x.propertyIsEnumerable(\'constructor\'): ', x.propertyIsEnumerable('constructor'));
   console.log('x.a():', x.a());
   console.log('x.a():', x.a());
   console.log('x.a():', x.a());

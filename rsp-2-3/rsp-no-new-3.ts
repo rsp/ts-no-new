@@ -43,6 +43,8 @@ for (let k in o) {
   console.log('x instanceof A:     ', x instanceof A);
   console.log('x instanceof B:     ', x instanceof B);
   console.log('x instanceof Proxy: ', x instanceof Proxy);
+  console.log('x.hasOwnProperty(\'constructor\'): ', x.hasOwnProperty('constructor'));
+  console.log('x.propertyIsEnumerable(\'constructor\'): ', x.propertyIsEnumerable('constructor'));
   console.log('x.a():', x.a());
   console.log('x.a():', x.a());
   console.log('x.a():', x.a());
