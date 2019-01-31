@@ -1,4 +1,6 @@
 
+// XXX: currently broken
+
 // rsp:
 type NC<X> = { new (): X };
 type FC<X> = { (): X };
@@ -9,27 +11,36 @@ function nn<X>(C: NC<X>): MC<X> {
   }) as MC<X>;
 }
 
-class $A {
+interface A {
   x: number;
-  constructor() {
-    this.x = 0;
-  }
-  a() {
-    return this.x += 1;
-  }
+  // new (): A;
+  a(): number;
 }
-type A = $A;
-const A: MC<A> = nn($A);
-Object.defineProperty(A, 'name', { value: 'A' });
 
-class $B extends $A {
-  a() {
-    return this.x += 2;
+const A = nn(
+  class A {
+    x: number;
+    constructor() {
+      this.x = 0;
+    }
+    a() {
+      return this.x += 1;
+    }
   }
+);
+// Object.defineProperty(A, 'name', { value: 'A' });
+
+interface B extends A {
 }
-type B = $B;
-const B: MC<B> = nn($B);
-Object.defineProperty(B, 'name', { value: 'B' });
+
+const B = nn(
+  class B extends A {
+    a() {
+      return this.x += 2;
+    }
+  }
+);
+// Object.defineProperty(B, 'name', { value: 'B' });
 
 const o: { [s: string]: A }= {
   'new A()': new A(),
@@ -38,9 +49,7 @@ const o: { [s: string]: A }= {
   'B()': B(),
 };
 
-console.log('$A.name:', $A.name);
 console.log('A.name:', A.name);
-console.log('$B.name:', $B.name);
 console.log('B.name:', B.name);
 
 for (let k in o) {
@@ -48,15 +57,11 @@ for (let k in o) {
   console.log(`---\nx = ${k}`);
   console.log('console.log(x):', x);
   console.log('x instanceof A:', x instanceof A);
-  console.log('x instanceof $A:', x instanceof $A);
   console.log('x instanceof B:', x instanceof B);
-  console.log('x instanceof $B:', x instanceof $B);
   console.log('x instanceof Proxy:', x instanceof Proxy);
   console.log('x.constructor.name:', x.constructor.name);
-  console.log('x.constructor == A:', x.constructor == A);
-  console.log('x.constructor == $A:', x.constructor == $A);
-  console.log('x.constructor == B:', x.constructor == B);
-  console.log('x.constructor == $B:', x.constructor == $B);
+  // console.log('x.constructor == A:', x.constructor == A); // always false
+  // console.log('x.constructor == B:', x.constructor == B); // always false
   console.log('x.a():', x.a());
   console.log('x.a():', x.a());
   console.log('x.a():', x.a());
