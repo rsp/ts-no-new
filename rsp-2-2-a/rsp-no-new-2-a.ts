@@ -63,7 +63,10 @@ for (let k in o) {
   console.log('x instanceof A:', x instanceof A);
   console.log('x instanceof B:', x instanceof B);
   console.log('x instanceof Proxy:', x instanceof Proxy);
-  console.log(x.a());
-  console.log(x.a());
-  console.log(x.a());
+  console.log('x.constructor.name:', x.constructor.name);
+  console.log('x.constructor == A:', x.constructor == A);
+  console.log('x.constructor == B:', x.constructor == B);
+  console.log('x.a():', x.a());
+  console.log('x.a():', x.a());
+  console.log('x.a():', x.a());
 }
