@@ -55,11 +55,11 @@ console.log('B.name:', B.name);
 for (let k in o) {
   const x: A = o[k];
   console.log(`---\nx = ${k}`);
-  console.log('console.log(x):', x);
-  console.log('x instanceof A:', x instanceof A);
-  console.log('x instanceof B:', x instanceof B);
-  console.log('x instanceof Proxy:', x instanceof Proxy);
-  console.log('x.constructor.name:', x.constructor.name);
+  console.log('console.log(x):     ', x);
+  console.log('x instanceof A:     ', x instanceof A);
+  console.log('x instanceof B:     ', x instanceof B);
+  console.log('x instanceof Proxy: ', x instanceof Proxy);
+  console.log('x.constructor.name: ', x.constructor.name);
   // console.log('x.constructor == A:', x.constructor == A); // always false
   // console.log('x.constructor == B:', x.constructor == B); // always false
   console.log('x.a():', x.a());
