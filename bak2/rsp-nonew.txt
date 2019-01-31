@@ -1,0 +1,6 @@
+// by rsp - 
+
+class X { constructor(){ this.aa = 0; } a(){ return this.aa++ } }
+
+const Y = new Proxy(X, { apply(t, i, a) { return new t(...a); } });
+

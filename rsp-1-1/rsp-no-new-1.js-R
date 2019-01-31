@@ -1,0 +1,31 @@
+
+const nonew = c => new Proxy(c, {
+  apply: (t, i, a) => new t(...a)
+});
+
+const nonewdec = () => nonew;
+
+const A = nonew(
+class A {
+  constructor() {
+    this.x = 0;
+  }
+  a() {
+    return this.x+=1;
+  }
+});
+
+const B = nonew(
+  class B extends A {
+    a() {
+      return this.x+=2;
+    }
+  });
+  
+const x = A();
+console.log('x instanceof A:', x instanceof A);
+console.log('x instanceof B:', x instanceof B);
+console.log('x instanceof Proxy:', x instanceof Proxy);
+console.log(x.a());
+console.log(x.a());
+console.log(x.a());
