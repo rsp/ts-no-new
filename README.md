@@ -11,9 +11,12 @@ Feedback
 I am not 100% happy with any of those solutions.
 Any feedback with better ideas is more than welcome.
 
-I would especially like to eliminate all `any` types,
-without making the proxy wrapper specific to one particular type
-which is tricky (if possible at all). I will appreciate any help with that.
+I would especially like to:
+
+1. eliminate all `any` types (without making the proxy wrapper specific to one particular type - which is tricky, if possible at all)
+1. eliminate proxies (currently I don't think it's possible but hopefully I'm wrong)
+
+I will appreciate any help with that.
 
 Background
 -
