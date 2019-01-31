@@ -15,7 +15,7 @@ class _A {
     this.x = 0;
   }
   a() {
-    return this.x+=1;
+    return this.x += 1;
   }
 }
 type A = _A;
@@ -23,7 +23,7 @@ const A: MC<A> = nn(_A);
 
 class _B extends _A {
   a() {
-    return this.x+=2;
+    return this.x += 2;
   }
 }
 type B = _A;

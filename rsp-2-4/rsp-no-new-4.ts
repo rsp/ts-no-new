@@ -15,7 +15,7 @@ class $A {
     this.x = 0;
   }
   a() {
-    return this.x+=1;
+    return this.x += 1;
   }
 }
 type A = $A;
@@ -24,7 +24,7 @@ Object.defineProperty(A, 'name', { value: 'A' });
 
 class $B extends $A {
   a() {
-    return this.x+=2;
+    return this.x += 2;
   }
 }
 type B = $B;
