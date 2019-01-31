@@ -27,14 +27,21 @@ The idea is to match the built-in costructors like `Array` as closely as possibl
 1. It should use `class` keyword instead of defining the constructors as old style functions
 1. The compiler should understand the types and the VSCode editor should correctly detect errors like a typo in a method name exactly the same as normal constructors with `new` keyword in TypeScript - no type safety compromises
 1. Both `a = new A()` and `a = A()` should work the same
-1. In both cases `a instanceof A` should be true
-1. In both cases `a.constructor.name` ahould be `'A'`
+1. In both cases `a instanceof A` should be `true`
+1. In both cases `a.constructor.name` should be `'A'`
 1. In both cases `console.log(a)` should print `A {...}`
-1. Another constructor `B` should be able to extend (inherit from) `A`
+1. Another constructor `B` should be able to extend (inherit from) `A` using `class B extends A { ... }` syntax
 1. Both `b = new B()` and `b = B()` should both work
-1. In both cases `b instanceof B` and `b instanceof A` and should be true
+1. In both cases `b instanceof B` and `b instanceof A` and should be `true`
 1. In both cases `a.constructor.name` ahould be `'B'`
 1. In both cases `console.log(a)` should print `B {...}`
+
+Optional requirement (is it important? or can it be harmful?):
+
+1. In both cases for the base class (`a = new A()` and `a = A()`) `a.constructor == A` should be `true`
+1. In both cases for the child class (`b = new B()` and `b = B()`) `b.constructor == B` should be `true`
+
+Can it even be done without proxying the instances or changing the costructor to redefine the `constructor` property of the object? (which can be made non enumerable but would still return `true` for `hasOwnProperty`) It may not be worth the hassle but I may be wrong here.
 
 If you have some other important feature that is not listed here,
 please [post an issue][issues-url].
